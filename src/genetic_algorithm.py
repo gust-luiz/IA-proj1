@@ -1,6 +1,7 @@
 from random import shuffle
 
-from variables import POPULATION_SZ
+from variables import POPULATION_SZ, distance_min
+from utils import get_total_distance
 
 
 def get_initial_generation():
@@ -19,7 +20,10 @@ def get_next_generation(current, new):
 
 
 def fitness(generation):
-    return generation
+    calculed = list(map(_calc_fitness, generation))
+    calculed.sort(key = lambda x: x[1])
+
+    return [c[0] for c in calculed]
 
 
 def crossover(generation):
@@ -28,3 +32,7 @@ def crossover(generation):
 
 def mutation(generation):
     return []
+
+
+def _calc_fitness(route):
+    return route, get_total_distance(route) / distance_min

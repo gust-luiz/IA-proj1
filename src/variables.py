@@ -1,3 +1,5 @@
+from sys import maxsize
+
 # Population size to manage
 POPULATION_SZ = 30
 # Generation max attempts
@@ -19,7 +21,7 @@ STABILITY_PERC = .15
 STABILITY_MAX = 5
 
 # Shortest distance found so far
-distance_min = "inf"
+distance_min = maxsize
 # Stability current counter
 stability_cnt = 0
 

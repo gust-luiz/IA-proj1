@@ -1,6 +1,6 @@
 from genetic_algorithm import (crossover, fitness, get_initial_generation,
                                get_next_generation, mutation)
-from utils import get_named_route, get_total_distance, reached_stability
+from utils import get_named_route, reached_stability
 from variables import GENERATION_MAX
 
 
@@ -19,5 +19,3 @@ for cnt in range(GENERATION_MAX):
 
 print('best route:')
 print(get_named_route(generation[0]))
-print('total distance:')
-print(get_total_distance(generation[0]))
