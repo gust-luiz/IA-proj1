@@ -33,7 +33,7 @@ CODED_CITIES = {
     '3': 'Lima',
     '4': 'Bogotá',
     '5': 'Santiago',
-    '6': 'Caracás',
+    '6': 'Caracas',
     '7': 'Belo Horizonte',
     '8': 'Porto Alegre',
     '9': 'Brasília',

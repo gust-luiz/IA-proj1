@@ -6,7 +6,7 @@ def reached_stability(generation):
 
 
 def get_named_route(route):
-    return ' -> '.join([CODED_CITIES.get(city) for city in route])
+    return ' -> '.join([CODED_CITIES.get(city) for city in route]) + ' -> ' + CODED_CITIES.get(route[0])
 
 
 def get_total_distance(route):

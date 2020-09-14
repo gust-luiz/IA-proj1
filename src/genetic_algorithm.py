@@ -10,7 +10,7 @@ def get_initial_generation():
     for _ in range(POPULATION_SZ):
         another_cities = list(map(str, range(9)))
         shuffle(another_cities)
-        population.append(''.join(['9', *another_cities, '9']))
+        population.append(''.join(['9', *another_cities]))
 
     return population
 
@@ -52,4 +52,3 @@ def mutation(generation):
 
 def _calc_fitness(route):
     return route, get_total_distance(route) / distance_min
-    
