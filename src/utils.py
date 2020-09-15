@@ -1,12 +1,30 @@
-from variables import CODED_CITIES, DISTANCES
+import variables
+from variables import CODED_CITIES, DISTANCES, STABILITY_MAX, STABILITY_PERC
 
 
 def reached_stability(generation):
-    return False
+    c_min_dist = get_total_distance(generation[0])
+    c_diff = c_min_dist / (variables.stability_base_pnt or variables.distance_min)
+
+    if c_min_dist < variables.distance_min:
+        variables.distance_min = c_min_dist
+
+    if c_diff >= (1 - STABILITY_PERC) and c_diff <= (1 + STABILITY_PERC):
+        variables.stability_cnt += 1
+
+        if variables.stability_cnt == 1:
+            variables.stability_base_pnt = c_min_dist
+    else:
+        variables.stability_cnt = 0
+        variables.stability_base_pnt = None
+
+    return variables.stability_cnt == STABILITY_MAX
 
 
 def get_named_route(route):
-    return ' -> '.join([CODED_CITIES.get(city) for city in route]) + ' -> ' + CODED_CITIES.get(route[0])
+    route += '9'
+
+    return ' -> '.join([CODED_CITIES.get(city) for city in route])
 
 
 def get_total_distance(route):

@@ -23,6 +23,8 @@ STABILITY_MAX = 5
 # Shortest distance found so far
 distance_min = maxsize
 # Stability current counter
+stability_base_pnt = None
+# Stability current counter
 stability_cnt = 0
 
 # Citied coded as 0-9 digit

@@ -1,12 +1,14 @@
-from genetic_algorithm import (crossover_2_point, fitness, get_initial_generation,
-                               get_next_generation, get_total_distance, mutation)
+from genetic_algorithm import (crossover_2_point, fitness,
+                               get_initial_generation, get_next_generation,
+                               get_total_distance, mutation)
 from utils import get_named_route, reached_stability
 from variables import GENERATION_MAX
-
 
 generation = get_initial_generation()
 
 for cnt in range(GENERATION_MAX):
+    print('cnt', cnt)
+
     generation = fitness(generation)
 
     new_individuals = crossover_2_point(generation)
