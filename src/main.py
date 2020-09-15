@@ -20,5 +20,5 @@ for cnt in range(GENERATION_MAX):
 print('best route:')
 print(get_named_route(generation[0]))
 print(get_total_distance(generation[0]))
-print(mutation(generation))
+#print(mutation(generation))
 print(crossover_2_point(generation))
