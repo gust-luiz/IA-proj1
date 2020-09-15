@@ -1,12 +1,12 @@
 from sys import maxsize
 
 # Population size to manage
-POPULATION_SZ = 30
+POPULATION_SZ = 40
 # Generation max attempts
 GENERATION_MAX = 1000
 
 # Crossover probability between individuals
-CROSSOVER_PBTY = .3
+CROSSOVER_PBTY = .5
 # Individual mutation probability
 MUTATION_PBTY = .1
 
