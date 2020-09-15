@@ -3,7 +3,7 @@ from sys import maxsize
 # Population size to manage
 POPULATION_SZ = 40
 # Generation max attempts
-GENERATION_MAX = 1000
+GENERATION_MAX = 50
 
 # Crossover probability between individuals
 CROSSOVER_PBTY = .78
@@ -23,8 +23,8 @@ STABILITY_MAX = 5
 
 # Shortest distance found so far
 distance_min = maxsize
-# Stability current counter
-stability_base_pnt = None
+avg_distance = None
+distance_range = None
 # Stability current counter
 stability_cnt = 0
 

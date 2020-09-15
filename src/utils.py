@@ -1,22 +1,18 @@
 import variables
-from variables import CODED_CITIES, DISTANCES, STABILITY_MAX, STABILITY_PERC
+from variables import (CODED_CITIES, DISTANCES, STABILITY_MAX, STABILITY_PERC,
+                       avg_distance, distance_range)
 
 
 def reached_stability(generation):
-    c_min_dist = get_total_distance(generation[0])
-    c_diff = c_min_dist / (variables.stability_base_pnt or variables.distance_min)
+    if not avg_distance:
+        return False
 
-    if c_min_dist < variables.distance_min:
-        variables.distance_min = c_min_dist
+    c_diff = distance_range / avg_distance
 
     if c_diff >= (1 - STABILITY_PERC) and c_diff <= (1 + STABILITY_PERC):
         variables.stability_cnt += 1
-
-        if variables.stability_cnt == 1:
-            variables.stability_base_pnt = c_min_dist
     else:
         variables.stability_cnt = 0
-        variables.stability_base_pnt = None
 
     return variables.stability_cnt == STABILITY_MAX
 

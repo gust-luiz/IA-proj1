@@ -1,8 +1,10 @@
 from random import choice, randint, random, sample, shuffle
 
+import variables
 from utils import get_total_distance
 from variables import (CHILDREN_PER_COUPLE_RANGE, CODED_CITIES, CROSSOVER_PBTY,
-                       MUTATION_PBTY, POPULATION_SZ, distance_min)
+                       CURRENT_INDV_PERC, MUTATION_PBTY, NEW_INDV_PERC,
+                       POPULATION_SZ, distance_min)
 
 
 def get_initial_generation():
@@ -17,11 +19,44 @@ def get_initial_generation():
 
 
 def get_next_generation(current, new):
-    return current
+    new_sz = round(POPULATION_SZ * NEW_INDV_PERC)
+    current_sz = round(POPULATION_SZ * CURRENT_INDV_PERC)
+
+    next_generation, rest = current[: current_sz], current[current_sz + 1 :]
+
+    if len(new) >= new_sz:
+        next_generation.extend(sample(new, k=new_sz))
+
+        return next_generation
+
+    next_generation.extend(new)
+
+    while len(next_generation) < POPULATION_SZ:
+        next_generation.append(rest.pop())
+
+    print('next_gen', len(next_generation), next_generation)
+
+    return next_generation
 
 
 def fitness(generation):
-    calculed = list(map(_calc_fitness, generation))
+    calculed = []
+    average = 0
+    min_dist, max_dist = float('inf'), float('-inf')
+
+    for individual in generation:
+        total, fitness_value = _calc_fitness(individual)
+
+        average += total
+        min_dist = min([min_dist, total])
+        max_dist = max([max_dist, total])
+
+        calculed.append([individual, fitness_value])
+
+    variables.current_dist_range = max_dist - min_dist
+    variables.avg_distance = average / len(generation)
+    variables.distance_min = min([min_dist, variables.distance_min])
+
     calculed.sort(key = lambda x: x[1])
 
     return [c[0] for c in calculed]
@@ -55,9 +90,8 @@ def crossover(generation):
 
 def mutation(generation):
     individuals_mutated = []
-    generation_mutated = generation.copy()
 
-    for id, individual in enumerate(generation_mutated):
+    for id, individual in enumerate(generation):
         if random() <= MUTATION_PBTY:
             gene_a_idx, gene_b_idx = (int(n) for n in sample(range(1, 10), 2))
             old_gene = individual[gene_a_idx]
@@ -68,9 +102,7 @@ def mutation(generation):
 
             individuals_mutated.append(''.join(individual_list))
 
-            generation_mutated[id] = ''.join(individual_list)
-
-    return individuals_mutated, generation_mutated
+    return individuals_mutated
 
 
 def _crossover_2_point(parent_a, parent_b):
@@ -123,4 +155,4 @@ def _crossover_order1(parent_a, parent_b):
 
 
 def _calc_fitness(route):
-    return route, get_total_distance(route) / distance_min
+    return get_total_distance(route), get_total_distance(route) / distance_min
