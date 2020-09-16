@@ -73,7 +73,8 @@ def crossover(generation):
     new_individuals = []
     # half_gen_sz = len(generation) / 2
     options = [
-        _crossover_order1,
+        # _crossover_order1,
+        _ordered_asc_crossover,
         # _crossover_2_point
     ]
 
@@ -148,11 +149,34 @@ def _crossover_order1(parent_a, parent_b):
         fixed = list(map(int, choice([parent_a, parent_b])[inds[0]: inds[1] + 1]))
         rest = [num for num in range(cities_cnt) if num not in fixed and num != 9]
         shuffle(rest)
+
         new = [fixed.pop(0) if ind >= inds[0] and ind <= inds[1] else rest.pop() for ind in range(1, cities_cnt)]
-        new_individuals.append(''.join(['9', *list(map(str, new))]))
+        new = ''.join(['9', *list(map(str, new))])
+
+        if new not in [parent_a, parent_b]:
+            new_individuals.append(new)
 
     return new_individuals
 
+
+def _ordered_asc_crossover(parent_a, parent_b):
+    cities_cnt = len(CODED_CITIES)
+    new_individuals = []
+
+    for _ in range(randint(*CHILDREN_PER_COUPLE_RANGE)):
+        inds = sample(range(1, cities_cnt), 2)
+        inds.sort()
+
+        fixed = list(map(int, choice([parent_a, parent_b])[inds[0]: inds[1] + 1]))
+        rest = [num for num in range(cities_cnt) if num not in fixed and num != 9]
+
+        new = [fixed.pop(0) if ind >= inds[0] and ind <= inds[1] else rest.pop() for ind in range(1, cities_cnt)]
+        new = ''.join(['9', *list(map(str, new))])
+
+        if new not in [parent_a, parent_b]:
+            new_individuals.append(new)
+
+    return new_individuals
 
 def _calc_fitness(route):
     return get_total_distance(route), get_total_distance(route) / distance_min
