@@ -148,7 +148,7 @@ def _crossover_order1(parent_a, parent_b):
         fixed = list(map(int, choice([parent_a, parent_b])[inds[0]: inds[1] + 1]))
         rest = [num for num in range(cities_cnt) if num not in fixed and num != 9]
         shuffle(rest)
-        new = [fixed.pop() if ind >= inds[0] and ind <= inds[1] else rest.pop() for ind in range(1, cities_cnt)]
+        new = [fixed.pop(0) if ind >= inds[0] and ind <= inds[1] else rest.pop() for ind in range(1, cities_cnt)]
         new_individuals.append(''.join(['9', *list(map(str, new))]))
 
     return new_individuals
