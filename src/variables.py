@@ -3,7 +3,7 @@ from sys import maxsize
 # Population size to manage
 POPULATION_SZ = 40
 # Generation max attempts
-GENERATION_MAX = 50
+GENERATION_MAX = 1000
 
 # Crossover probability between individuals
 CROSSOVER_PBTY = .78

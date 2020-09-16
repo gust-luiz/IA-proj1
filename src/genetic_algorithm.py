@@ -1,7 +1,7 @@
 from random import choice, randint, random, sample, shuffle
 
 import variables
-from utils import get_total_distance
+from utils import get_total_distance, rm_duplicates
 from variables import (CHILDREN_PER_COUPLE_RANGE, CODED_CITIES, CROSSOVER_PBTY,
                        CURRENT_INDV_PERC, MUTATION_PBTY, NEW_INDV_PERC,
                        POPULATION_SZ, distance_min)
@@ -73,8 +73,9 @@ def crossover(generation):
     new_individuals = []
     # half_gen_sz = len(generation) / 2
     options = [
-        # _crossover_order1,
+        _crossover_order1,
         _ordered_crossover,
+        _uniform_crossover,
         # _crossover_2_point
     ]
 
@@ -177,6 +178,22 @@ def _ordered_crossover(parent_a, parent_b):
             new_individuals.append(new)
 
     return new_individuals
+
+
+def _uniform_crossover(parent_a, parent_b):
+    cities_cnt = len(CODED_CITIES)
+    new_individuals = []
+
+    for _ in range(randint(*CHILDREN_PER_COUPLE_RANGE)):
+        new = []
+
+        for ind in range(cities_cnt):
+            new.append(choice([parent_a[ind], parent_b[ind]]))
+
+        new_individuals.append(rm_duplicates(new))
+
+    return new_individuals
+
 
 def _calc_fitness(route):
     return get_total_distance(route), get_total_distance(route) / distance_min
