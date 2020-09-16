@@ -1,4 +1,4 @@
-from genetic_algorithm import (crossover, fitness, get_initial_generation,
+from genetic_algorithm import (_crossover_2_point,crossover, fitness, get_initial_generation,
                                get_next_generation, get_total_distance,
                                mutation)
 from utils import get_named_route, reached_stability
