@@ -1,15 +1,16 @@
 from random import shuffle
 
 import variables
-from variables import (CODED_CITIES, DISTANCES, STABILITY_MAX, STABILITY_PERC,
-                       avg_distance, distance_range)
+from variables import CODED_CITIES, DISTANCES, STABILITY_MAX, STABILITY_PERC
 
 
 def reached_stability(generation):
-    if not avg_distance:
+    if not variables.avg_distance or variables.found_new_min:
+        variables.stability_cnt = 0
+
         return False
 
-    c_diff = distance_range / avg_distance
+    c_diff = variables.distance_range / variables.avg_distance
 
     if c_diff >= (1 - STABILITY_PERC) and c_diff <= (1 + STABILITY_PERC):
         variables.stability_cnt += 1
