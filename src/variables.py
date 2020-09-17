@@ -6,9 +6,9 @@ POPULATION_SZ = 40
 GENERATION_MAX = 1000
 
 # Crossover probability between individuals
-CROSSOVER_PBTY = .78
+CROSSOVER_PBTY = .3
 # Individual mutation probability
-MUTATION_PBTY = .1
+MUTATION_PBTY = .01
 CHILDREN_PER_COUPLE_RANGE = (1, 4)
 
 # Current individuals percentage to keep to the next generation

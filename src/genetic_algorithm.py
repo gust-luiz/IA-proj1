@@ -22,7 +22,7 @@ def get_next_generation(current, new):
     new_sz = round(POPULATION_SZ * NEW_INDV_PERC)
     current_sz = round(POPULATION_SZ * CURRENT_INDV_PERC)
 
-    next_generation, rest = set(current[: current_sz]), current[current_sz + 1 :]
+    next_generation, rest = set(current[: current_sz]), current[current_sz :]
 
     while new and len(next_generation) < POPULATION_SZ:
         next_generation.add(new.pop(0))
@@ -33,6 +33,8 @@ def get_next_generation(current, new):
         return next_generation
 
     while len(next_generation) < POPULATION_SZ:
+        print(len(rest))
+        print(len(next_generation))
         next_generation.append(rest.pop(0))
 
     return next_generation
