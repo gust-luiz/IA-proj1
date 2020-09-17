@@ -4,3 +4,6 @@
 # Automatically created cache files
 __pycache__
 *pyc
+
+# Automatically created lock files
+.~lock*
