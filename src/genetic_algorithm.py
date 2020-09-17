@@ -67,7 +67,6 @@ def fitness(generation):
 
 def crossover(generation):
     new_individuals = []
-    # half_gen_sz = len(generation) / 2
     options = [
         _crossover_order1,
         _ordered_crossover,
@@ -76,12 +75,10 @@ def crossover(generation):
     ]
 
     for ind in range(0, len(generation), 2):
-    # for ind in range(0, half_gen_sz):
-        if random() >= CROSSOVER_PBTY:
+        if random() > CROSSOVER_PBTY:
             continue
 
         new_individuals.extend(choice(options)(generation[ind], generation[ind + 1]))
-        # new_individuals.extend(choice(options)(generation[ind], generation[half_gen_sz + ind]))
 
     return new_individuals
 

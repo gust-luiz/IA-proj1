@@ -1,18 +1,18 @@
 from sys import maxsize
 
 # Population size to manage
-POPULATION_SZ = 40
+POPULATION_SZ = 60
 # Generation max attempts
 GENERATION_MAX = 1000
 
 # Crossover probability between individuals
 CROSSOVER_PBTY = .3
 # Individual mutation probability
-MUTATION_PBTY = .01
+MUTATION_PBTY = .05
 CHILDREN_PER_COUPLE_RANGE = (1, 4)
 
 # Current individuals percentage to keep to the next generation
-CURRENT_INDV_PERC = .6
+CURRENT_INDV_PERC = .5
 # New individuals percentage to select to the next generation
 NEW_INDV_PERC = 1 - CURRENT_INDV_PERC
 
@@ -29,7 +29,7 @@ found_new_min = False
 # Stability current counter
 stability_cnt = 0
 
-# Citied coded as 0-9 digit
+# Cities coded as 0-9 digit
 CODED_CITIES = {
     '0': 'São Paulo',
     '1': 'Salvador',
