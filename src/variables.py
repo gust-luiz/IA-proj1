@@ -17,14 +17,15 @@ CURRENT_INDV_PERC = .6
 NEW_INDV_PERC = 1 - CURRENT_INDV_PERC
 
 # Stability percentage range between generation
-STABILITY_PERC = .15
+STABILITY_PERC = .1
 # Stability max occurrences in a row
-STABILITY_MAX = 5
+STABILITY_MAX = 10
 
 # Shortest distance found so far
 distance_min = maxsize
 avg_distance = None
 distance_range = None
+found_new_min = False
 # Stability current counter
 stability_cnt = 0
 

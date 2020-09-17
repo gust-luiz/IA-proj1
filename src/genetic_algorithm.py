@@ -22,19 +22,18 @@ def get_next_generation(current, new):
     new_sz = round(POPULATION_SZ * NEW_INDV_PERC)
     current_sz = round(POPULATION_SZ * CURRENT_INDV_PERC)
 
-    next_generation, rest = current[: current_sz], current[current_sz + 1 :]
+    next_generation, rest = set(current[: current_sz]), current[current_sz + 1 :]
 
-    if len(new) >= new_sz:
-        next_generation.extend(sample(new, k=new_sz))
+    while new and len(next_generation) < POPULATION_SZ:
+        next_generation.add(new.pop(0))
 
+    next_generation = list(next_generation)
+
+    if len(next_generation) == POPULATION_SZ:
         return next_generation
 
-    next_generation.extend(new)
-
     while len(next_generation) < POPULATION_SZ:
-        next_generation.append(rest.pop())
-
-    print('next_gen', len(next_generation), next_generation)
+        next_generation.append(rest.pop(0))
 
     return next_generation
 
@@ -53,9 +52,14 @@ def fitness(generation):
 
         calculed.append([individual, fitness_value])
 
-    variables.current_dist_range = max_dist - min_dist
+    variables.distance_range = max_dist - min_dist
     variables.avg_distance = average / len(generation)
-    variables.distance_min = min([min_dist, variables.distance_min])
+
+    if min_dist < variables.distance_min:
+        variables.distance_min = min_dist
+        variables.found_new_min = True
+    else:
+        variables.found_new_min = False
 
     calculed.sort(key = lambda x: x[1])
 
@@ -121,9 +125,9 @@ def _crossover_2_point(parent_a, parent_b):
     son_b = rm_duplicates(son_b)
 
     # Add to new_individuals list if it is different from parents
-    if (son_a != parent_a) and (son_b != parent_b):
-        # print("TROCOU CROSSOVER_2_POINT!!")
+    if son_a != parent_a:
         new_individuals.append(son_a)
+    if son_b != parent_b:
         new_individuals.append(son_b)
 
     return new_individuals
