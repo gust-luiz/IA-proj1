@@ -1,18 +1,18 @@
 from sys import maxsize
 
 # Population size to manage
-POPULATION_SZ = 60
+POPULATION_SZ = 40
 # Generation max attempts
 GENERATION_MAX = 1000
 
 # Crossover probability between individuals
-CROSSOVER_PBTY = .3
+CROSSOVER_PBTY = .78
 # Individual mutation probability
-MUTATION_PBTY = .05
+MUTATION_PBTY = .1
 CHILDREN_PER_COUPLE_RANGE = (1, 4)
 
 # Current individuals percentage to keep to the next generation
-CURRENT_INDV_PERC = .5
+CURRENT_INDV_PERC = .6
 # New individuals percentage to select to the next generation
 NEW_INDV_PERC = 1 - CURRENT_INDV_PERC
 
