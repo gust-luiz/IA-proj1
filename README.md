@@ -22,4 +22,9 @@ As distâncias diretas entre as cidades estão descritas abaixo, em centenas de 
 A rota deve iniciar e terminar em Brasília (BSB), só devendo passar uma vez por cidade, e deve ser a rota com menor distância total a ser percorrida.
 
 ### Solução
-Desenvolvida em [Python 3.7.6](https://www.python.org/downloads/release/python-376/).
+Desenvolvida em [Python 3.7.6](https://www.python.org/downloads/release/python-376/), executada através dos comandos:
+
+```
+# Ativar ambiente virtual
+python src/main.py
+```
