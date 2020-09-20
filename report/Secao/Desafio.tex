@@ -1,0 +1,26 @@
+\section{Desafio}
+    \label{sec:desafio}
+A problemática do caixeiro viajante foi aplicada a um grupo de sete amigos que desejam realizar uma viagem por $10$ cidades da América do Sul, passando por todas apenas uma vez numa rota circular, com ponto de partida fixo~\cite{Roteiro}.
+
+Somente duas informações são conhecidas sobre a viagem: as cidades - São Paulo (SAO), Salvador (SSA), Rio de Janeiro (RIO), Lima (LIM), Bogotá (BOG), Santiago (SCL), Caracas (CCS), Belo Horizonte (CNF), Porto Alegre (POA) e Brasília (BSB) - e as distâncias diretas entre elas, conforme Tabela~\ref{tab:desafio_dist}. Por ser uma matriz simétrica, somente a parte triangular superior foi representada.
+
+A rota deve ser iniciada em BSB e retornar à mesma, devendo utilizar duas formas de reprodução e limitada em $1000$ gerações.
+
+\begin{table}[!h]
+    \centering\small
+    \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}p{.04\linewidth}| p{.04\linewidth} | p{.04\linewidth} | p{.04\linewidth} | p{.04\linewidth} | p{.04\linewidth} | p{.04\linewidth} | p{.04\linewidth} | p{.04\linewidth} | p{.04\linewidth} | p{.04\linewidth} @{}}
+         & \cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} SAO} & \cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} SSA} & \cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} RIO} & \cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} LIM} & \cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} BOG} & \cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} SCL} & \cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} CCS} & \cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} CNF} & \cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} POA} & \cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} BSB} \\ \hline
+        \cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} SAO} & - & 17 & 3 & 35 & 43 & 26 & 44 & 5 & 8 & 9 \\ \hline
+        \cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} SSA} & \cellcolor[HTML]{C0C0C0} & - & 20 & 31 & 47 & 11 & 51 & 22 & 8 & 23 \\ \hline
+        \cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} RIO} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & - & 38 & 45 & 29 & 45 & 3 & 11 & 9 \\ \hline
+        \cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} LIM} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & - & 19 & 25 & 27 & 36 & 33 & 32 \\ \hline
+        \cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} BOG} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & - & 43 & 10 & 43 & 46 & 37 \\ \hline
+        \cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} SCL} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & - & 49 & 30 & 19 & 30 \\ \hline
+        \cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} CCS} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & - & 42 & 48 & 35 \\ \hline
+        \cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} CNF} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & - & 13 & 6 \\ \hline
+        \cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} POA} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & - & 16 \\ \hline
+        \cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} BSB} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & - \\ \hline
+    \end{tabular*}
+    \caption{Distâncias diretas entre as cidades, na escala de centenas de quilômetros ($10^2$ km)}
+    \label{tab:desafio_dist}
+\end{table}

@@ -1,0 +1,80 @@
+% Layout do Papel
+%\usepackage{../Layout/Layout_Documento}
+% Codificacao dos Caracteres: UNICODE
+\usepackage[utf8]{inputenc}
+% Codificacao da fonte: Portugues
+\usepackage[T1]{fontenc}
+% Configuracao de linguagem do documento:
+% portugues e ingles
+\usepackage[brazilian]{babel}
+% \usepackage[portuguese]{babel}
+%\usepackage [linktoc=all]{hyperref}
+\usepackage[ddmmyyyy]{datetime}
+% Caso dê erro no pacote, executar no terminal (Linux):
+% sudo apt-get install texlive-lang-portuguese
+% Configuração do papel
+\usepackage{geometry}
+% Permitir mudança de orientação da página
+\usepackage{pdflscape}
+%\usepackage {lscape}
+% Espaçamento entre linhas
+\usepackage{setspace}
+% Manipulacao de graficos no documento
+\usepackage{graphicx}
+% Possibilita inserir sub-imagens
+\usepackage{subfigure}
+\usepackage{subfig}
+% Possibilita inserir imagens ao lado do texto
+\usepackage{wrapfig}
+% Manipulação extra em tabelas
+\usepackage{tabularx}
+\usepackage{array}
+% Manipulação das cores
+\usepackage{color, colortbl}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{amsmath}
+% Configuração do texto do rodapé e do cabeçalho
+%\usepackage {fancyheadings}
+\usepackage{fancyhdr}
+% Uso de macros ao longo do texto: title, date, etc.
+\usepackage{titling}
+% Possibilita criar Ambientes com diversas colunas
+\usepackage{multicol}
+%\usepackage {natbib}
+% Possibilita o uso de trechos em latim
+\usepackage{lipsum}
+% Possibilita a quebra de tabela em páginas
+\usepackage{longtable}
+\usepackage{supertabular}
+
+% Possibilita quebrar link url em mais de uma linha
+\PassOptionsToPackage{hyphens}{url}
+
+\usepackage[linktoc=all]{hyperref}
+
+% Possibilita trocar os contadores dos itens
+\usepackage{enumitem}
+
+% Possibilita tachar texto
+\usepackage[normalem]{ulem}
+
+
+
+% Possibilita código-fonte no documento
+\usepackage{listings}
+\renewcommand{\lstlistingname}{Código}
+\renewcommand{\lstlistlistingname}{Lista de Códigos Fonte}
+
+\hypersetup{%
+    colorlinks=true,
+    linkcolor=red,
+    citecolor=red,
+}
+\geometry{
+	a4paper,
+	total	= {210 mm, 297 mm},
+	left	= 20 mm,
+	right	= 20 mm,
+	top		= 20 mm,
+	bottom	= 20 mm,
+}
